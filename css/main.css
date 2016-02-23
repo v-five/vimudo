@@ -25,13 +25,15 @@ body{
 }
 
 .wrapper{
-	width: 1290px;
+	/*width: 1290px;*/
+	max-width: 96%;
 	margin:0 auto;
 	flex-wrap:wrap;
 }
 
 .relative{
 	position: relative;
+	width: 100%;
 }
 
 .btn{
@@ -66,7 +68,8 @@ body{
 	font-weight: 100;
 	color:#58616E;
 	padding:0 65px 0 20px;
-	min-width: 400px;
+	/*min-width: 400px;*/
+	max-width: 100%;
 	border-radius:10px;
 	background: rgba(0,0,0,.03);
 	outline:0;
