@@ -1,0 +1,28 @@
+{
+  "name": "vimudo",
+  "version": "0.0.1",
+  "description": "Just 4 fun",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:v-five/vimudo.git"
+  },
+  "keywords": [
+    "music",
+    "share"
+  ],
+  "author": "v-five",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/v-five/vimudo/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.6",
+    "vhost": "^3.0.2"
+  }
+}

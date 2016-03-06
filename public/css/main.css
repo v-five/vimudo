@@ -22,11 +22,11 @@ html{
 body{
 	min-height: 100%;
 	background: #F0FCFF;
+	transition: all .3s ease;
 }
 
 .wrapper{
-	/*width: 1290px;*/
-	max-width: 96%;
+	max-width: 100%;
 	margin:0 auto;
 	flex-wrap:wrap;
 }
@@ -58,6 +58,7 @@ body{
 	color:#111;
 	margin-bottom: 350px;
 	font-size: 80px;
+	transition: all .3s ease;
 }
 
 .form-input{
@@ -120,6 +121,10 @@ body{
 	position: fixed;
 }
 
+.loader-img{
+	height:100%;
+}
+
 .exit{
 	position: absolute;
 	font-size: 70px;
@@ -130,6 +135,10 @@ body{
 	cursor: pointer;
 	top: 0;
 	left: -50px;
+}
+
+.menu:focus{
+	outline: 0;
 }
 
 .music-list{
@@ -180,4 +189,32 @@ body{
 
 .img-block, .music-content{
 	margin:0 0 0 auto;
+}
+
+@media (max-width:955px){
+
+	.menu{
+		width: 100%;
+		left:100%;
+	}
+
+	.exit{
+		color:#F0FCFF;
+		left:10px;
+	}
+}
+
+@media (max-width: 480px){
+	.wrapper{
+		padding:0 20px;
+	}
+
+	.logo{
+		margin-bottom: 100px;
+	}
+
+	body.on-focus{
+		display: block;
+	}
+
 }
