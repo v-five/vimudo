@@ -7,8 +7,7 @@ gulp.task('default', function(){
         script: 'app.js',
         ext: 'js',
         env: {
-            PORT:8000,
-            DNS:'vimudo.local'
+            PORT:80,
         },
         ignore: ['./node_modules/**']
     })
