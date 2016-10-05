@@ -1,6 +1,4 @@
-
 (function($,sr){
-
 	// debouncing function from John Hann
 	// http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
 	var debounce = function (func, threshold, execAsap) {
@@ -24,12 +22,9 @@
 	}
 	// smartresize
 	jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
-
 })(jQuery,'smartresize');
 
-
 (function($){
-
 	var loader = {
 		show: function($el){
 			$el.append('<div class="loader-img flex-center-wrapper"><img class="flex-row" src="~/../images/puff.svg" alt="loader" /></div>');
@@ -55,7 +50,6 @@
 	};
 
 	var menu = $('.menu').sliiide(settings);
-
 	imgLiquid();
 
 	$('.slide-toggle').on('click', function(e){
@@ -66,41 +60,25 @@
 		var pattern = /(https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?$/i;
 
 		musicList.empty();
-
 		$('.menu').focus();
-
 		loader.hide(musicList).show(musicList);
-
 		if(pattern.test(q))
-			api.share(q, function(data){
-
-				$.each(data, function(i, val){
-
-					musicList.append(
-						$('<div>').addClass('music-block')
-							.css('background-image', 'url(' + val.artwork.large + ')')
-							.append($('<div>').addClass('music-wrapper')
-								.append($('<div>').addClass('img-block').append(
-									$('<img>').attr('src', 'youtube.png')
-								))
-								.append($('<div>').addClass('music-content')
-									.append($('<h1>').addClass('title').text(val.name))
-									.append($('<p>').text(val.artist.name)))));
-				});
+			api.match(q, function(data){
+				displayResults(data);
 				loader.hide(musicList);
-
 				imgLiquid();
 			});
 		else
 			api.search(q, function(data){
-				console.log(data);
+				displayResults(data);
+				loader.hide(musicList);
+				imgLiquid();
 			});
 	});
 
 	$('.search-input').on({
 		focus: function(){
 			$('body').addClass('on-focus');
-
 			if($('.menu').is(':visible')){
 				menu.deactivate();
 			}
@@ -122,6 +100,19 @@
 		$('.img-block').imgLiquid({fill:false});
 	}
 
-
+	function displayResults(track){
+		$.each(track.services, function(i, service){
+			$('#music-list').append(
+				$('<div>').addClass('music-block')
+					.css('background-image', 'url(' + service.artwork + ')')
+					.append($('<a>').attr({'href': service.url, 'target': '_parent'})
+						.append($('<div>').addClass('music-wrapper')
+							.append($('<div>').addClass('img-block').append(
+								$('<img>').attr('src', api.host + 'assets/logos/' + service.name + '.png')
+							))
+							.append($('<div>').addClass('music-content')
+								.append($('<h1>').addClass('title').text(track.title))
+								.append($('<p>').text(track.artist.name))))));
+		});
+	}
 })(jQuery);
-

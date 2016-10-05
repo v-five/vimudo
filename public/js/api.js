@@ -3,12 +3,13 @@
  */
 
 var Api = function() {
-	this.url = 'http://localhost:8000/api/dev/';
+	this.host = 'http://localhost:8000/'
+	this.url  = this.host + 'api/dev/';
 };
 
-Api.prototype.share = function(url, done){
+Api.prototype.match = function(url, done){
 	$.ajax({
-		url: this.url + 'share',
+		url: this.url + 'match',
 		type: "POST",
 		data: JSON.stringify({"url": url}),
 		contentType:"application/json",
